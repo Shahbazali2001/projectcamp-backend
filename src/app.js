@@ -2,7 +2,7 @@ import express from "express"
 import cors from "cors"
 
 // Routes Import
-import healthCheckRouter from "./routes/healthCheck.routes.js"
+import healthCheckRouter from "./routes/healthRoutes/healthcheck.routes.js"
 
 // Initialize App
 const app = express()

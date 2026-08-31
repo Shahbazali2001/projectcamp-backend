@@ -23,7 +23,8 @@
     "mongoose": "^9.9.3",
     "multer": "^2.2.0",
     "nodemailer": "^9.0.6",
-    "nodemon": "^3.1.14"
+    "nodemon": "^3.1.14",
+    "zod": "^4.5.4"
   },
   "devDependencies": {
     "prettier": "3.9.6"

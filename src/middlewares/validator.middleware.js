@@ -11,5 +11,5 @@ export const validator = (req, res, next) => {
   const extractedErrors = []
   errors.array().map((err) => extractedErrors.push({ [err.path]: err.msg }))
 
-  throw new ApiError(400, "Validation Error", extractedErrors)
+  throw new ApiError(402, "Received Invalid Data", extractedErrors)
 }

@@ -31,6 +31,6 @@ const userRegisterValidator = () => {
       .notEmpty()
       .withMessage("Full name is required"),
   ]
-}
+} 
 
 export { userRegisterValidator }

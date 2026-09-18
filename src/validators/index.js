@@ -15,7 +15,7 @@ const userRegisterValidator = () => {
       .withMessage("Username is required")
       .isLowercase()
       .withMessage("Username must be lowercase")
-      .length({ min: 4, max: 14 })
+      .isLength({ min: 4, max: 14 })
       .withMessage("Username must be between 4 and 14 characters long"),
 
     body("password")
@@ -31,6 +31,6 @@ const userRegisterValidator = () => {
       .notEmpty()
       .withMessage("Full name is required"),
   ]
-} 
+}
 
 export { userRegisterValidator }

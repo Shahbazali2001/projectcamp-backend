@@ -1,20 +1,21 @@
 import mongoose from "mongoose"
 
-const projectSchema = new mongoose.Schema(
+const subtaskSchema = new mongoose.Schema(
   {
-    name: {
-      type: String,
-      required: true,
-      unique: true,
-      trim: true,
-    },
-
-    description: {
+    title: {
       type: String,
       required: true,
       trim: true,
     },
-
+    task: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Task",
+      required: true,
+    },
+    isCompleted: {
+      type: Boolean,
+      default: false,
+    },
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
@@ -24,4 +25,4 @@ const projectSchema = new mongoose.Schema(
   { timestamps: true },
 )
 
-export const Project = mongoose.model("Project", projectSchema)
+export const Subtask = mongoose.model("Subtask", subtaskSchema)

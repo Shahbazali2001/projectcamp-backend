@@ -64,5 +64,41 @@ const getProjects = asyncHandler(async (req, res) => {
     },
   ])
 
-  res.status(200).json(new ApiResponse(projects))
+  res.status(200).json(new ApiResponse(200, projects, "Projects Fetched"))
 })
+
+//get project by id
+const getProjectById = asyncHandler(async (req, res) => {
+  const { projectId } = req.params
+  const project = await Project.findById(projectId)
+  if (!project) {
+    throw new ApiError(404, "Project not found")
+  }
+  res.status(200).json(new ApiResponse(200, project, "Project Fetched"))
+})
+
+//create Project
+const createProject = asyncHandler(async (req, res) => {
+  const { name, description } = req.body
+  const project = await Project.create({
+    name,
+    description,
+    createdBy: new mongoose.Types.ObjectId(req.user._id),
+  })
+  await ProjectMember.create({
+    user: new mongoose.Types.ObjectId(req.user._id),
+    project: new mongoose.Types.ObjectId(project._id),
+    role: UserRolesEnum.ADMIN,
+  })
+  res
+    .status(201)
+    .json(new ApiResponse(201, project, "Project created Successfully"))
+})
+
+//update project
+const updateProject = asyncHandler(async (req, res) => {
+  
+})
+
+//delete project
+const deleteProject = asyncHandler(async (req, res) => {})
